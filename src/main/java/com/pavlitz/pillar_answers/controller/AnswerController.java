@@ -5,6 +5,8 @@ import com.pavlitz.pillar_answers.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -23,13 +25,27 @@ public class AnswerController {
         return service.findAll();
     }
 
+    @GetMapping(value = "/getConnect")
+    public String sendResponse(){
+        return "connected";
+    }
+
     @GetMapping(value = "/", params = {"pillarType"})
     public List<Answer> findByPillarType(@RequestParam("pillarType") String pillarType) {
         return service.findByPillarType(pillarType);
     }
 
+    @GetMapping(value = "/", params = {"pillarTypeWeekly"})
+    public List<Answer> weekly(@RequestParam("pillarTypeWeekly") String pillarTypeWeekly){
+        LocalDate now = LocalDate.now();
+        Date end = Date.valueOf(now);
+        Date start = Date.valueOf(now.minusDays(7));
+        return service.findByPillarTimeInPeriod(pillarTypeWeekly, start, end);
+    }
+
     @GetMapping(value = "/{id}")
     public Answer findById(@PathVariable Long id) {
+
         return service.findById(id);
     }
 

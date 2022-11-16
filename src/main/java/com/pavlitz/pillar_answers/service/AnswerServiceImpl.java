@@ -5,6 +5,7 @@ import com.pavlitz.pillar_answers.repos.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +32,11 @@ public class AnswerServiceImpl implements AnswerService{
     public List<Answer> findByPillarType(String pillarType) {
         /// TODO: 14.11.2022 check it
         return repository.findByPillarType(pillarType);
+    }
+
+    @Override
+    public List<Answer> findByPillarTimeInPeriod(String pillarType, Date start, Date end) {
+        return repository.findByPillarTypeAndCreationDateBetween(pillarType, start, end);
     }
 
     @Override
