@@ -7,7 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.sql.Date;
@@ -19,9 +22,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class PillarAnswersApplicationTests {
 
-    final Logger logger = LoggerFactory.getLogger(PillarAnswersApplicationTests.class);
+    private final Logger logger = LoggerFactory.getLogger(PillarAnswersApplicationTests.class);
 
-    private final String URL = "http://localhost:8080/answer";
+    private final String URL = "http://localhost:8070/answer";
 
     private final RestTemplate restTemplate = new RestTemplate();
 
