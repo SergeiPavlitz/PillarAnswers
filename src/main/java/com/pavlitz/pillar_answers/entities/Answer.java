@@ -1,8 +1,11 @@
 package com.pavlitz.pillar_answers.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.sql.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "pillaranswers")
 public class Answer {
