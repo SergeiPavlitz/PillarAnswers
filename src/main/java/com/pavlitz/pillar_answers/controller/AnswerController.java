@@ -14,6 +14,9 @@ import java.util.List;
 public class AnswerController {
 
     private final AnswerService service;
+//    private final SomeField someField;
+//    private final OneMoreField oneMoreField;
+//    private final Field field;
 
     @Autowired
     public AnswerController(AnswerService service) {
